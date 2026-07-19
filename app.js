@@ -9,6 +9,21 @@ const gateShirt = document.querySelector('#gate-shirt');
 const productShirt = document.querySelector('#product-shirt');
 const productStage = document.querySelector('#product-stage');
 const viewToggle = document.querySelector('#view-toggle');
+const defaultTitle = 'UNASKED® — SOCIAL EXPERIMENT 000';
+const microToast = document.querySelector('#micro-toast');
+
+let toastTimer;
+function showMicrocopy(message, duration = 1800) {
+  clearTimeout(toastTimer);
+  microToast.textContent = message;
+  microToast.classList.add('is-visible');
+  toastTimer = setTimeout(() => microToast.classList.remove('is-visible'), duration);
+}
+
+document.addEventListener('visibilitychange', () => {
+  document.title = document.hidden ? 'GOOD. YOU LEFT.' : 'UNFORTUNATELY, YOU’RE BACK.';
+  if (!document.hidden) setTimeout(() => { document.title = defaultTitle; }, 1800);
+});
 
 let hasEntered = sessionStorage.getItem('ugly-entered') === 'true';
 
@@ -76,6 +91,8 @@ window.addEventListener('pointermove', (event) => {
 let rotationX = -3;
 let rotationY = -8;
 let scale = 1;
+let zoomMessageShown = false;
+let backViewCount = 0;
 let dragging = false;
 let startX = 0;
 let startY = 0;
@@ -88,6 +105,10 @@ function updateProductTransform(animate = false) {
   const normalized = ((rotationY % 360) + 360) % 360;
   const showingBack = normalized > 90 && normalized < 270;
   viewToggle.innerHTML = `${showingBack ? 'VIEW FRONT' : 'VIEW BACK'} <span>↻</span>`;
+  if (scale >= 1.42 && !zoomMessageShown) {
+    zoomMessageShown = true;
+    showMicrocopy('TOO CLOSE.');
+  }
 }
 
 productStage.addEventListener('pointerdown', (event) => {
@@ -119,6 +140,11 @@ viewToggle.addEventListener('click', () => {
   const normalized = ((rotationY % 360) + 360) % 360;
   rotationY += normalized > 90 && normalized < 270 ? 180 : 180;
   updateProductTransform(true);
+  const afterTurn = ((rotationY % 360) + 360) % 360;
+  if (afterTurn > 90 && afterTurn < 270) {
+    backViewCount += 1;
+    if (backViewCount === 2) showMicrocopy('YES. THAT’S STILL THE BACK.');
+  }
 });
 productStage.addEventListener('dblclick', () => {
   rotationY += 180;
@@ -150,12 +176,13 @@ function openCart() {
   cartBackdrop.hidden = false;
   body.classList.add('locked');
 }
-function closeCart() {
+function closeCart(showRecovery = true) {
   cart.classList.remove('is-open');
   cart.setAttribute('aria-hidden', 'true');
   bagButton.setAttribute('aria-expanded', 'false');
   cartBackdrop.hidden = true;
   if (!checkout.classList.contains('is-active')) body.classList.remove('locked');
+  if (showRecovery && inCart) showMicrocopy('GOOD RECOVERY.');
 }
 function addToCart() {
   inCart = true;
@@ -165,15 +192,21 @@ function addToCart() {
 addButton.addEventListener('click', addToCart);
 closingBuy.addEventListener('click', addToCart);
 bagButton.addEventListener('click', openCart);
-cartClose.addEventListener('click', closeCart);
-cartBackdrop.addEventListener('click', closeCart);
+cartClose.addEventListener('mouseenter', () => { cartClose.textContent = 'ESCAPE'; cartClose.classList.add('is-word'); });
+cartClose.addEventListener('mouseleave', () => { cartClose.textContent = '×'; cartClose.classList.remove('is-word'); });
+cartClose.addEventListener('click', () => closeCart(true));
+cartBackdrop.addEventListener('click', () => closeCart(true));
 removeButton.addEventListener('click', () => {
-  inCart = false;
-  bagCount.textContent = '0';
-  cart.classList.add('is-empty');
+  removeButton.textContent = 'CHARACTER DEVELOPMENT.';
+  setTimeout(() => {
+    inCart = false;
+    bagCount.textContent = '0';
+    cart.classList.add('is-empty');
+    showMicrocopy('CHARACTER DEVELOPMENT.');
+  }, 650);
 });
 checkoutButton.addEventListener('click', () => {
-  closeCart();
+  closeCart(false);
   checkout.classList.add('is-active');
   checkout.setAttribute('aria-hidden', 'false');
   body.classList.add('locked');
@@ -213,9 +246,79 @@ document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
   if (success.classList.contains('is-active')) successClose.click();
   else if (checkout.classList.contains('is-active')) checkoutClose.click();
-  else if (cart.classList.contains('is-open')) closeCart();
+  else if (cart.classList.contains('is-open')) closeCart(true);
 });
 
 document.querySelector('#sound-button').addEventListener('click', (event) => {
   event.currentTarget.textContent = 'SOUND: STILL OFF';
 });
+
+const price = document.querySelector('#product-price');
+function showPriceOpinion() { price.textContent = 'TOO MUCH.'; }
+function restorePrice() { price.textContent = '€73.00'; }
+price.addEventListener('mouseenter', showPriceOpinion);
+price.addEventListener('mouseleave', restorePrice);
+price.addEventListener('focus', showPriceOpinion);
+price.addEventListener('blur', restorePrice);
+
+const sizeButton = document.querySelector('#size-button');
+sizeButton.addEventListener('click', () => {
+  sizeButton.textContent = 'YOU’LL MAKE IT WORK.';
+  setTimeout(() => { sizeButton.textContent = 'THE ONE SIZE'; }, 1900);
+});
+
+const validationCopy = {
+  email: 'EVEN YOUR EMAIL LOOKS WRONG.',
+  address: 'WE NEED SOMEWHERE TO SEND THE MISTAKE.',
+};
+checkoutForm.querySelectorAll('input[required]').forEach((input) => {
+  input.addEventListener('invalid', () => {
+    input.setCustomValidity(validationCopy[input.name] || 'MISSING. LIKE YOUR JUDGMENT.');
+  });
+  input.addEventListener('input', () => input.setCustomValidity(''));
+});
+
+let brandClicks = 0;
+let brandClickTimer;
+document.querySelectorAll('#gate-wordmark, #wordmark, #footer-wordmark').forEach((mark) => {
+  mark.addEventListener('click', (event) => {
+    if (mark.id !== 'wordmark') event.preventDefault();
+    brandClicks += 1;
+    clearTimeout(brandClickTimer);
+    brandClickTimer = setTimeout(() => { brandClicks = 0; }, 2400);
+    if (brandClicks >= 5) {
+      brandClicks = 0;
+      mark.classList.add('is-found');
+      showMicrocopy('YOU FOUND NOTHING.', 2400);
+      setTimeout(() => mark.classList.remove('is-found'), 700);
+    }
+  });
+});
+
+let inactivityShown = false;
+let inactivityTimer;
+function resetInactivity() {
+  clearTimeout(inactivityTimer);
+  if (inactivityShown) return;
+  inactivityTimer = setTimeout(() => {
+    inactivityShown = true;
+    showMicrocopy('TAKE YOUR TIME. THERE ARE ONLY 73.', 2600);
+  }, 20000);
+}
+['pointerdown', 'keydown', 'scroll'].forEach((eventName) => window.addEventListener(eventName, resetInactivity, { passive: true }));
+resetInactivity();
+
+let pullStart = null;
+let pullDistance = 0;
+window.addEventListener('touchstart', (event) => {
+  if (window.scrollY === 0) pullStart = event.touches[0]?.clientY ?? null;
+}, { passive: true });
+window.addEventListener('touchmove', (event) => {
+  if (pullStart === null) return;
+  pullDistance = (event.touches[0]?.clientY ?? pullStart) - pullStart;
+}, { passive: true });
+window.addEventListener('touchend', () => {
+  if (pullDistance > 85) showMicrocopy('NOTHING NEW.');
+  pullStart = null;
+  pullDistance = 0;
+}, { passive: true });
