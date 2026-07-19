@@ -156,6 +156,8 @@ const cart = document.querySelector('#cart');
 const cartBackdrop = document.querySelector('#cart-backdrop');
 const bagButton = document.querySelector('#bag-button');
 const bagCount = document.querySelector('#bag-count');
+const bagDefault = document.querySelector('#bag-default');
+const bagWarning = document.querySelector('#bag-warning');
 const addButton = document.querySelector('#add-button');
 const closingBuy = document.querySelector('#closing-buy');
 const cartClose = document.querySelector('#cart-close');
@@ -167,6 +169,7 @@ const checkoutForm = document.querySelector('#checkout-form');
 const success = document.querySelector('#success');
 const successClose = document.querySelector('#success-close');
 let inCart = false;
+let cartWarningTimer;
 
 function openCart() {
   cart.classList.toggle('is-empty', !inCart);
@@ -175,8 +178,15 @@ function openCart() {
   bagButton.setAttribute('aria-expanded', 'true');
   cartBackdrop.hidden = false;
   body.classList.add('locked');
+  clearTimeout(cartWarningTimer);
+  if (inCart) {
+    cartWarningTimer = setTimeout(() => {
+      if (cart.classList.contains('is-open') && inCart) showMicrocopy('YOU CAN STILL CLOSE THIS.');
+    }, 7000);
+  }
 }
 function closeCart(showRecovery = true) {
+  clearTimeout(cartWarningTimer);
   cart.classList.remove('is-open');
   cart.setAttribute('aria-hidden', 'true');
   bagButton.setAttribute('aria-expanded', 'false');
@@ -205,6 +215,32 @@ removeButton.addEventListener('click', () => {
     showMicrocopy('CHARACTER DEVELOPMENT.');
   }, 650);
 });
+
+bagButton.addEventListener('mouseenter', () => {
+  if (inCart) return;
+  bagDefault.hidden = true;
+  bagWarning.hidden = false;
+});
+bagButton.addEventListener('mouseleave', () => {
+  bagDefault.hidden = false;
+  bagWarning.hidden = true;
+});
+
+const addButtonLabel = addButton.querySelector('span');
+addButton.addEventListener('mouseenter', () => {
+  if (!addButton.disabled) addButtonLabel.textContent = 'DON’T.';
+});
+addButton.addEventListener('mouseleave', () => {
+  if (!addButton.disabled) addButtonLabel.textContent = 'MAKE A BAD DECISION';
+});
+
+const stockWarning = document.querySelector('#stock-warning');
+function warnAboutStock() { stockWarning.textContent = '73 IS NOT A GOAL.'; }
+function restoreStock() { stockWarning.textContent = '73 mistakes available.'; }
+stockWarning.addEventListener('mouseenter', warnAboutStock);
+stockWarning.addEventListener('mouseleave', restoreStock);
+stockWarning.addEventListener('focus', warnAboutStock);
+stockWarning.addEventListener('blur', restoreStock);
 checkoutButton.addEventListener('click', () => {
   closeCart(false);
   checkout.classList.add('is-active');
@@ -221,6 +257,15 @@ checkoutForm.addEventListener('submit', (event) => {
   success.classList.add('is-active');
   success.setAttribute('aria-hidden', 'false');
 });
+
+const confirmLabel = document.querySelector('#confirm-label');
+const confirmButton = document.querySelector('#confirm-button');
+function showFinalWarning() { confirmLabel.textContent = 'FINAL WARNING.'; }
+function restoreConfirmLabel() { confirmLabel.textContent = 'CONFIRM BAD DECISION'; }
+confirmButton.addEventListener('mouseenter', showFinalWarning);
+confirmButton.addEventListener('mouseleave', restoreConfirmLabel);
+confirmButton.addEventListener('focus', showFinalWarning);
+confirmButton.addEventListener('blur', restoreConfirmLabel);
 successClose.addEventListener('click', () => {
   success.classList.remove('is-active');
   success.setAttribute('aria-hidden', 'true');
