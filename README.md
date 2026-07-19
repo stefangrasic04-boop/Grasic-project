@@ -4,6 +4,8 @@ Interactive concept store for **Drop 000: The Boring One**.
 
 Live site: <https://stefangrasic04-boop.github.io/Grasic-project/>
 
+Deployment is handled automatically by the GitHub Pages workflow on every push to `main`.
+
 ## Run locally
 
 ```bash
