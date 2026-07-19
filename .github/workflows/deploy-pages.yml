@@ -24,6 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Enable Pages when needed
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/${{ github.repository }}/pages" -f build_type=workflow || \
+          gh api --method PUT "repos/${{ github.repository }}/pages" -f build_type=workflow
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
