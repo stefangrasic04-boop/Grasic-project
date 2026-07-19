@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="The Ugly Brand. One product. One size. 73 mistakes available." />
+    <title>THE UGLY BRAND — DROP 000</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22black%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2244%22 fill=%22white%22>U.</text></svg>" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="locked">
+    <div class="noise" aria-hidden="true"></div>
+
+    <section class="gate" id="gate" aria-labelledby="gate-title">
+      <div class="gate__topline">
+        <span>THE UGLY BRAND</span>
+        <span>EST. BY ACCIDENT</span>
+      </div>
+
+      <div class="gate__center">
+        <div class="gate-shirt garment-3d is-assembling" id="gate-shirt" aria-hidden="true">
+          <div class="shirt-face shirt-face--front">
+            <svg viewBox="0 0 420 500" role="img" aria-label="Washed black T-shirt">
+              <defs>
+                <filter id="fabric-gate" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.012 0.11" numOctaves="3" seed="17" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="cloth" />
+                  <feDiffuseLighting in="noise" surfaceScale="2" diffuseConstant="0.38" lighting-color="#9a9a96" result="light">
+                    <feDistantLight azimuth="225" elevation="52" />
+                  </feDiffuseLighting>
+                  <feBlend in="cloth" in2="light" mode="multiply" />
+                </filter>
+                <linearGradient id="shirt-gradient-gate" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#242422" />
+                  <stop offset=".42" stop-color="#111110" />
+                  <stop offset=".72" stop-color="#1d1d1b" />
+                  <stop offset="1" stop-color="#090909" />
+                </linearGradient>
+              </defs>
+              <path class="shirt-body" filter="url(#fabric-gate)" fill="url(#shirt-gradient-gate)" d="M139 50 75 75 16 146l58 64 44-34-12 276c62 23 146 23 208 0l-12-276 44 34 58-64-59-71-64-25-35-20c-7 28-65 28-72 0z" />
+              <path d="M174 30c8 27 64 27 72 0l17 10c-5 49-101 49-106 0z" fill="#050505" opacity=".95" />
+              <path d="M118 176c62-19 126-16 184 0M112 320c65 13 131 9 196-5M86 83c20 24 33 53 35 86" fill="none" stroke="#777773" stroke-opacity=".16" stroke-width="3" />
+              <text x="210" y="211" text-anchor="middle" fill="#bebeb7" font-size="10" font-family="Arial, sans-serif" letter-spacing="2.8">DON'T BUY THIS.</text>
+              <text x="210" y="430" text-anchor="middle" fill="#a6a69f" font-size="7" font-family="monospace" letter-spacing="1.8">DROP 000</text>
+            </svg>
+          </div>
+          <div class="shirt-face shirt-face--back">
+            <svg viewBox="0 0 420 500" aria-hidden="true">
+              <path fill="#151513" d="M139 50 75 75 16 146l58 64 44-34-12 276c62 23 146 23 208 0l-12-276 44 34 58-64-59-71-64-25-35-20c-7 28-65 28-72 0z" />
+              <text x="210" y="215" text-anchor="middle" fill="#d1d1ca" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.4">BE THE SAME AS</text>
+              <text x="210" y="232" text-anchor="middle" fill="#d1d1ca" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.4">EVERYONE ELSE.</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="gate__copy">
+          <p class="eyebrow">UNFORTUNATELY, YOU FOUND US.</p>
+          <h1 id="gate-title">YOU’RE IN THE<br />WRONG PLACE.</h1>
+          <div class="gate__actions">
+            <button class="button button--leave" id="leave-button" type="button">LEAVE</button>
+            <button class="button button--enter" id="enter-button" type="button">ENTER ANYWAY <span>↘</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gate__footer">
+        <span>DROP 000 / 73 UNITS</span>
+        <span>SCROLLING IS DISCOURAGED</span>
+      </div>
+    </section>
+
+    <section class="leave-screen" id="leave-screen" aria-live="polite" aria-hidden="true">
+      <p>GOOD CHOICE.</p>
+      <button id="return-button" type="button">I CHANGED MY MIND</button>
+    </section>
+
+    <main class="store" id="store" aria-hidden="true">
+      <header class="site-header">
+        <a class="wordmark" href="#product" aria-label="The Ugly Brand home">THE UGLY BRAND</a>
+        <p class="header-drop">DROP 000 — THE BORING ONE</p>
+        <button class="bag-button" id="bag-button" type="button" aria-controls="cart" aria-expanded="false">BAG [<span id="bag-count">0</span>]</button>
+      </header>
+
+      <section class="product" id="product">
+        <div class="product__visual">
+          <div class="product-stage" id="product-stage" aria-label="Interactive 3D view of Drop 000 T-shirt">
+            <div class="stage-hint stage-hint--top"><span>DRAG TO ROTATE</span><span>SCROLL TO INSPECT</span></div>
+
+            <div class="garment-3d product-shirt is-assembling" id="product-shirt">
+              <div class="shirt-face shirt-face--front">
+                <svg viewBox="0 0 420 500" role="img" aria-label="Front of washed black Drop 000 T-shirt">
+                  <defs>
+                    <filter id="fabric-front" x="-20%" y="-20%" width="140%" height="140%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.12" numOctaves="4" seed="21" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" result="cloth" />
+                      <feDiffuseLighting in="noise" surfaceScale="2.4" diffuseConstant="0.55" lighting-color="#b1b1ab" result="light"><feDistantLight azimuth="218" elevation="48" /></feDiffuseLighting>
+                      <feBlend in="cloth" in2="light" mode="multiply" />
+                    </filter>
+                    <linearGradient id="shirt-gradient-front" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0" stop-color="#292927"/><stop offset=".24" stop-color="#11110f"/><stop offset=".58" stop-color="#242422"/><stop offset="1" stop-color="#090909"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="shirt-body" filter="url(#fabric-front)" fill="url(#shirt-gradient-front)" d="M139 50 75 75 16 146l58 64 44-34-12 276c62 23 146 23 208 0l-12-276 44 34 58-64-59-71-64-25-35-20c-7 28-65 28-72 0z" />
+                  <path d="M174 30c8 27 64 27 72 0l17 10c-5 49-101 49-106 0z" fill="#050505"/>
+                  <path d="M118 176c62-19 126-16 184 0M112 320c65 13 131 9 196-5M86 83c20 24 33 53 35 86M334 83c-20 24-33 53-35 86" fill="none" stroke="#99998f" stroke-opacity=".14" stroke-width="3" />
+                  <text x="210" y="211" text-anchor="middle" fill="#c7c7bf" font-size="10" font-family="Arial, sans-serif" letter-spacing="2.8">DON'T BUY THIS.</text>
+                  <text x="210" y="430" text-anchor="middle" fill="#a6a69f" font-size="7" font-family="monospace" letter-spacing="1.8">DROP 000</text>
+                </svg>
+              </div>
+              <div class="shirt-face shirt-face--back">
+                <svg viewBox="0 0 420 500" role="img" aria-label="Back of washed black Drop 000 T-shirt">
+                  <defs>
+                    <filter id="fabric-back" x="-20%" y="-20%" width="140%" height="140%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.1" numOctaves="4" seed="9" result="noise" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" result="cloth" />
+                      <feDiffuseLighting in="noise" surfaceScale="2.2" diffuseConstant=".5" lighting-color="#a8a8a1" result="light"><feDistantLight azimuth="135" elevation="48" /></feDiffuseLighting>
+                      <feBlend in="cloth" in2="light" mode="multiply" />
+                    </filter>
+                    <linearGradient id="shirt-gradient-back" x1="1" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#262624"/><stop offset=".35" stop-color="#10100f"/><stop offset=".72" stop-color="#21211f"/><stop offset="1" stop-color="#080808"/></linearGradient>
+                  </defs>
+                  <path filter="url(#fabric-back)" fill="url(#shirt-gradient-back)" d="M139 50 75 75 16 146l58 64 44-34-12 276c62 23 146 23 208 0l-12-276 44 34 58-64-59-71-64-25-35-20c-7 28-65 28-72 0z" />
+                  <path d="M174 30c8 27 64 27 72 0l17 10c-5 49-101 49-106 0z" fill="#060606" />
+                  <text x="210" y="210" text-anchor="middle" fill="#d0d0c8" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.5">BE THE SAME AS</text>
+                  <text x="210" y="228" text-anchor="middle" fill="#d0d0c8" font-size="10" font-family="Arial, sans-serif" letter-spacing="1.5">EVERYONE ELSE.</text>
+                  <text x="210" y="430" text-anchor="middle" fill="#aaa9a1" font-size="7" font-family="monospace" letter-spacing="1.5">37 / 73</text>
+                </svg>
+              </div>
+              <div class="neck-label" aria-hidden="true"><span>WRONG CHOICE.</span><small>37 / 73</small></div>
+            </div>
+
+            <div class="stage-number">37 / 73</div>
+            <button class="view-toggle" id="view-toggle" type="button">VIEW BACK <span>↻</span></button>
+          </div>
+        </div>
+
+        <div class="product__info">
+          <div class="product__meta"><span>DROP 000</span><span>000 / 001</span></div>
+          <p class="eyebrow eyebrow--dark">THE BORING ONE</p>
+          <h2>NOBODY ASKED YOU<br />TO WEAR THIS.</h2>
+          <p class="product__description">A needlessly heavy, washed-black T-shirt made for people who do not need another T-shirt. You will not get attention for wearing this shirt.</p>
+
+          <div class="price-line"><span>€73.00</span><span>TAX INCLUDED. REGRET IS FREE.</span></div>
+
+          <div class="size-block">
+            <span>SIZE</span>
+            <button type="button" aria-pressed="true">THE ONE SIZE</button>
+            <p>Drop 000 genuinely comes in one size. We assumed you wouldn’t get this far.</p>
+          </div>
+
+          <button class="bad-decision" id="add-button" type="button"><span>MAKE A BAD DECISION</span><span>→</span></button>
+          <div class="stock-copy" id="stock-copy">
+            <p>One product.</p>
+            <p>One size.</p>
+            <p>73 mistakes available.</p>
+          </div>
+
+          <dl class="specs">
+            <div><dt>WEIGHT</dt><dd>300 G/M² HEAVYWEIGHT COTTON</dd></div>
+            <div><dt>FIT</dt><dd>OVERSIZED / BOXY / ONE SIZE</dd></div>
+            <div><dt>COLOUR</dt><dd>WASHED BLACK, ALMOST</dd></div>
+            <div><dt>EDITION</dt><dd>INDIVIDUALLY NUMBERED / 73 ONLY</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="manifesto">
+        <p class="manifesto__index">[ 000 — 073 ]</p>
+        <h2>BE NORMAL.<br />BUY SOMETHING ELSE.</h2>
+        <div class="manifesto__copy">
+          <p>We made 73. No restocks. No second colour pretending to be a new idea.</p>
+          <p>Every piece is numbered. When it’s gone, we make a different mistake.</p>
+        </div>
+      </section>
+
+      <section class="details" aria-label="Product details">
+        <article class="detail-card detail-card--fabric">
+          <div class="fabric-swatch"><span>300</span><small>G/M²</small></div>
+          <div><span>01</span><h3>TOO HEAVY.</h3><p>Dense cotton with a dry hand feel and visible washed texture. Zoom in. It is still cotton.</p></div>
+        </article>
+        <article class="detail-card detail-card--label">
+          <div class="label-demo"><span>THE UGLY BRAND</span><strong>WRONG CHOICE.</strong><small>37 / 73</small></div>
+          <div><span>02</span><h3>UNNECESSARILY NUMBERED.</h3><p>Your mistake is individual, even if your T-shirt isn’t. The edition number is assigned at random.</p></div>
+        </article>
+      </section>
+
+      <section class="closing">
+        <p>YOU ARE STILL HERE.</p>
+        <button id="closing-buy" type="button">MAKE A BAD DECISION <span>→</span></button>
+      </section>
+
+      <footer class="footer">
+        <p>THE UGLY BRAND<sup>™</sup></p>
+        <div><a href="#product">PRODUCT</a><a href="mailto:nobody@theuglybrand.example">CONTACT, UNFORTUNATELY</a><button id="sound-button" type="button">SOUND: OFF</button></div>
+        <small>© 2026. NO RIGHTS RESERVED. NO COOKIES EITHER.</small>
+      </footer>
+    </main>
+
+    <div class="cart-backdrop" id="cart-backdrop" hidden></div>
+    <aside class="cart" id="cart" aria-hidden="true" aria-labelledby="cart-title">
+      <div class="cart__header"><p id="cart-title">SERIOUSLY?</p><button class="cart-close" id="cart-close" type="button" aria-label="Close bag">×</button></div>
+      <div class="cart__body">
+        <div class="cart-item">
+          <div class="cart-thumb" aria-hidden="true">
+            <svg viewBox="0 0 120 140"><path fill="#181816" d="M40 18 20 26 3 47l18 20 13-11-4 77c20 7 40 7 60 0l-4-77 13 11 18-20-17-21-20-8-10-6c-2 8-18 8-20 0z"/><text x="60" y="75" fill="#ccc" text-anchor="middle" font-size="4">DON'T BUY THIS.</text></svg>
+          </div>
+          <div><h3>DROP 000 — THE BORING ONE</h3><p>WASHED BLACK / THE ONE SIZE</p><p>NUMBER ASSIGNED AT RANDOM</p></div>
+          <span>€73.00</span>
+        </div>
+        <button class="remove-button" id="remove-button" type="button">REMOVE IT. GOOD.</button>
+      </div>
+      <div class="cart__footer">
+        <div><span>SUBTOTAL</span><strong>€73.00</strong></div>
+        <p>Shipping calculated once it’s too late.</p>
+        <button class="checkout-button" id="checkout-button" type="button">CONTINUE MAKING MISTAKES <span>→</span></button>
+      </div>
+    </aside>
+
+    <div class="checkout" id="checkout" aria-hidden="true">
+      <div class="checkout__bar"><span>THE UGLY BRAND</span><button id="checkout-close" type="button">CLOSE ×</button></div>
+      <form class="checkout__form" id="checkout-form">
+        <div class="checkout__intro"><span>CHECKOUT / 01</span><h2>ONE LAST CHANCE<br />TO LEAVE.</h2><p>This is a concept checkout. No payment will be processed.</p></div>
+        <label>EMAIL<input name="email" type="email" autocomplete="email" placeholder="YOUR@BAD.DECISION" required /></label>
+        <div class="checkout__row"><label>FIRST NAME<input name="firstName" autocomplete="given-name" required /></label><label>LAST NAME<input name="lastName" autocomplete="family-name" required /></label></div>
+        <label>ADDRESS<input name="address" autocomplete="street-address" required /></label>
+        <div class="checkout__row"><label>CITY<input name="city" autocomplete="address-level2" required /></label><label>POSTCODE<input name="postcode" autocomplete="postal-code" required /></label></div>
+        <label>COUNTRY<select name="country"><option>SLOVENIA</option><option>ITALY</option><option>OTHER UNFORTUNATE PLACE</option></select></label>
+        <div class="checkout__summary"><span>DROP 000 × 1</span><strong>€73.00</strong></div>
+        <button type="submit">CONFIRM BAD DECISION <span>→</span></button>
+      </form>
+    </div>
+
+    <div class="success" id="success" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="success-title">
+      <span>ORDER #00037</span>
+      <h2 id="success-title">YOU FAILED<br />THE EXPERIMENT.</h2>
+      <p>Thank you.</p>
+      <button id="success-close" type="button">ACCEPT THE CONSEQUENCES</button>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
