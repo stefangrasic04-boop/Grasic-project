@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050505" />
-    <meta name="description" content="The Ugly Brand. One product. One size. 73 mistakes available." />
-    <title>THE UGLY BRAND — DROP 000</title>
+    <meta name="description" content="UNASKED®. SOCIAL EXPERIMENT 000. One product. One size. 73 mistakes available." />
+    <title>UNASKED® — SOCIAL EXPERIMENT 000</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22black%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2244%22 fill=%22white%22>U.</text></svg>" />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -14,8 +14,8 @@
 
     <section class="gate" id="gate" aria-labelledby="gate-title">
       <div class="gate__topline">
-        <span>THE UGLY BRAND</span>
-        <span>EST. BY ACCIDENT</span>
+        <span id="gate-wordmark">UNASKED®</span>
+        <span>SOCIAL EXPERIMENT 000</span>
       </div>
 
       <div class="gate__center">
@@ -77,8 +77,8 @@
 
     <main class="store" id="store" aria-hidden="true">
       <header class="site-header">
-        <a class="wordmark" href="#product" aria-label="The Ugly Brand home">THE UGLY BRAND</a>
-        <p class="header-drop">DROP 000 — THE BORING ONE</p>
+        <a class="wordmark" id="wordmark" href="#product" aria-label="UNASKED home">UNASKED®</a>
+        <p class="header-drop">SOCIAL EXPERIMENT 000</p>
         <button class="bag-button" id="bag-button" type="button" aria-controls="cart" aria-expanded="false">BAG [<span id="bag-count">0</span>]</button>
       </header>
 
@@ -140,11 +140,11 @@
           <h2>NOBODY ASKED YOU<br />TO WEAR THIS.</h2>
           <p class="product__description">A needlessly heavy, washed-black T-shirt made for people who do not need another T-shirt. You will not get attention for wearing this shirt.</p>
 
-          <div class="price-line"><span>€73.00</span><span>TAX INCLUDED. REGRET IS FREE.</span></div>
+          <div class="price-line"><span id="product-price" tabindex="0">€73.00</span><span>TAX INCLUDED. REGRET IS FREE.</span></div>
 
           <div class="size-block">
             <span>SIZE</span>
-            <button type="button" aria-pressed="true">THE ONE SIZE</button>
+            <button id="size-button" type="button" aria-pressed="true">THE ONE SIZE</button>
             <p>Drop 000 genuinely comes in one size. We assumed you wouldn’t get this far.</p>
           </div>
 
@@ -179,7 +179,7 @@
           <div><span>01</span><h3>TOO HEAVY.</h3><p>Dense cotton with a dry hand feel and visible washed texture. Zoom in. It is still cotton.</p></div>
         </article>
         <article class="detail-card detail-card--label">
-          <div class="label-demo"><span>THE UGLY BRAND</span><strong>WRONG CHOICE.</strong><small>37 / 73</small></div>
+          <div class="label-demo"><span>UNASKED®</span><strong>WRONG CHOICE.</strong><small>37 / 73</small></div>
           <div><span>02</span><h3>UNNECESSARILY NUMBERED.</h3><p>Your mistake is individual, even if your T-shirt isn’t. The edition number is assigned at random.</p></div>
         </article>
       </section>
@@ -190,9 +190,9 @@
       </section>
 
       <footer class="footer">
-        <p>THE UGLY BRAND<sup>™</sup></p>
-        <div><a href="#product">PRODUCT</a><a href="mailto:nobody@theuglybrand.example">CONTACT, UNFORTUNATELY</a><button id="sound-button" type="button">SOUND: OFF</button></div>
-        <small>© 2026. NO RIGHTS RESERVED. NO COOKIES EITHER.</small>
+        <p id="footer-wordmark">UNASKED<sup>®</sup></p>
+        <div><span>SOCIAL EXPERIMENT 000</span><a href="#product">PRODUCT</a><a href="mailto:nobody@unasked.example">CONTACT, UNFORTUNATELY</a><button id="sound-button" type="button">SOUND: OFF</button></div>
+        <small>© 2026. STILL HERE.</small>
       </footer>
     </main>
 
@@ -217,7 +217,7 @@
     </aside>
 
     <div class="checkout" id="checkout" aria-hidden="true">
-      <div class="checkout__bar"><span>THE UGLY BRAND</span><button id="checkout-close" type="button">CLOSE ×</button></div>
+      <div class="checkout__bar"><span>UNASKED® — SOCIAL EXPERIMENT 000</span><button id="checkout-close" type="button">CLOSE ×</button></div>
       <form class="checkout__form" id="checkout-form">
         <div class="checkout__intro"><span>CHECKOUT / 01</span><h2>ONE LAST CHANCE<br />TO LEAVE.</h2><p>This is a concept checkout. No payment will be processed.</p></div>
         <label>EMAIL<input name="email" type="email" autocomplete="email" placeholder="YOUR@BAD.DECISION" required /></label>
@@ -236,6 +236,8 @@
       <p>Thank you.</p>
       <button id="success-close" type="button">ACCEPT THE CONSEQUENCES</button>
     </div>
+
+    <div class="micro-toast" id="micro-toast" role="status" aria-live="polite"></div>
 
     <script type="module" src="./app.js"></script>
   </body>
