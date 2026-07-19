@@ -1,9 +1,8 @@
-# THE UGLY BRAND — DROP 000
+# UNASKED® — SOCIAL EXPERIMENT 000
 
 Interactive concept store for **Drop 000: The Boring One**.
 
-Live site after enabling GitHub Pages from `main / (root)`:
-<https://stefangrasic04-boop.github.io/Grasic-project/>
+Live site: <https://stefangrasic04-boop.github.io/Grasic-project/>
 
 ## Run locally
 
