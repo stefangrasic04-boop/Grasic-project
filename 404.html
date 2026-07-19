@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050505" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="description" content="UNASKED®. SOCIAL EXPERIMENT 000. One product. One size. 73 mistakes available." />
     <title>UNASKED® — SOCIAL EXPERIMENT 000</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22black%22/><text x=%2250%22 y=%2264%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2244%22 fill=%22white%22>U.</text></svg>" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css?v=unasked-000-2" />
   </head>
   <body class="locked">
     <div class="noise" aria-hidden="true"></div>
@@ -79,7 +82,7 @@
       <header class="site-header">
         <a class="wordmark" id="wordmark" href="#product" aria-label="UNASKED home">UNASKED®</a>
         <p class="header-drop">SOCIAL EXPERIMENT 000</p>
-        <button class="bag-button" id="bag-button" type="button" aria-controls="cart" aria-expanded="false">BAG [<span id="bag-count">0</span>]</button>
+        <button class="bag-button" id="bag-button" type="button" aria-controls="cart" aria-expanded="false"><span id="bag-default">BAG [<span id="bag-count">0</span>]</span><span id="bag-warning" hidden>KEEP IT THAT WAY.</span></button>
       </header>
 
       <section class="product" id="product">
@@ -152,7 +155,7 @@
           <div class="stock-copy" id="stock-copy">
             <p>One product.</p>
             <p>One size.</p>
-            <p>73 mistakes available.</p>
+            <p id="stock-warning" tabindex="0">73 mistakes available.</p>
           </div>
 
           <dl class="specs">
@@ -226,7 +229,7 @@
         <div class="checkout__row"><label>CITY<input name="city" autocomplete="address-level2" required /></label><label>POSTCODE<input name="postcode" autocomplete="postal-code" required /></label></div>
         <label>COUNTRY<select name="country"><option>SLOVENIA</option><option>ITALY</option><option>OTHER UNFORTUNATE PLACE</option></select></label>
         <div class="checkout__summary"><span>DROP 000 × 1</span><strong>€73.00</strong></div>
-        <button type="submit">CONFIRM BAD DECISION <span>→</span></button>
+        <button id="confirm-button" type="submit"><span id="confirm-label">CONFIRM BAD DECISION</span><span>→</span></button>
       </form>
     </div>
 
@@ -239,6 +242,6 @@
 
     <div class="micro-toast" id="micro-toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=unasked-000-2"></script>
   </body>
 </html>
