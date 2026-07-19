@@ -91,6 +91,7 @@ a { text-decoration: none; }
 .product__description { max-width: 470px; margin: 31px 0 54px; font-size: 13px; line-height: 1.55; }
 .price-line { display: flex; justify-content: space-between; align-items: end; padding: 0 0 14px; border-bottom: 1px solid var(--line-light); }
 .price-line span:first-child { font-size: 20px; letter-spacing: -.03em; }
+.price-line span:first-child { min-width: 105px; cursor: default; transition: opacity .16s ease; }
 .price-line span:last-child { font: 8px/1 monospace; color: #77766f; }
 .size-block { margin: 36px 0 25px; }
 .size-block > span { display: block; margin-bottom: 12px; font-size: 9px; letter-spacing: .12em; }
@@ -148,6 +149,7 @@ a { text-decoration: none; }
 .cart__header { display: flex; justify-content: space-between; align-items: center; padding: 23px; border-bottom: 1px solid var(--line-light); }
 .cart__header p { margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -.05em; }
 .cart-close { cursor: pointer; background: transparent; font-size: 29px; font-weight: 300; }
+.cart-close.is-word { font-size: 8px; letter-spacing: .12em; }
 .cart__body { padding: 25px; }
 .cart-item { display: grid; grid-template-columns: 100px 1fr auto; gap: 18px; align-items: start; }
 .cart-thumb { display: grid; place-items: center; aspect-ratio: .82; background: #cecdc5; }
@@ -185,6 +187,12 @@ a { text-decoration: none; }
 .success p { margin: 12px 0 70px; font: italic 18px/1 Georgia, serif; }
 .success button { cursor: pointer; padding: 15px 22px; background: transparent; color: #686862; border: 1px solid #343431; font-size: 8px; letter-spacing: .12em; transition: color .2s, border .2s; }
 .success button:hover { color: white; border-color: white; }
+
+.micro-toast { position: fixed; z-index: 125; left: 50%; bottom: 26px; max-width: min(440px, calc(100vw - 32px)); padding: 10px 13px; border: 1px solid rgba(255,255,255,.16); background: rgba(5,5,5,.88); color: #b8b7b0; font: 8px/1.2 monospace; letter-spacing: .12em; text-align: center; opacity: 0; visibility: hidden; translate: -50% 8px; backdrop-filter: blur(9px); pointer-events: none; transition: opacity .22s ease, translate .35s var(--ease), visibility .22s; }
+.micro-toast.is-visible { opacity: 1; visibility: visible; translate: -50% 0; }
+.wordmark, #gate-wordmark, #footer-wordmark { cursor: pointer; }
+.wordmark.is-found, #gate-wordmark.is-found, #footer-wordmark.is-found { animation: found-nothing .55s ease; }
+@keyframes found-nothing { 0%,100% { opacity: 1; } 35% { opacity: .18; } 60% { opacity: .72; } }
 
 @media (max-width: 900px) {
   .gate-shirt { width: min(88vw, 470px); opacity: .7; }
