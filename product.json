@@ -1,0 +1,22 @@
+{
+  "brand": "UNASKED.",
+  "drop": "DROP 000",
+  "subtitle": "SOCIAL EXPERIMENT",
+  "product_name": "THE BORING ONE",
+  "price_eur": 73,
+  "edition_display": "37/73",
+  "front": ["UNASKED.", "DROP 000 — SOCIAL EXPERIMENT"],
+  "back_main": ["BE NORMAL.", "BUY SOMETHING ELSE."],
+  "back_micro": ["BUYING THIS T-SHIRT WAS A MISTAKE.", "37/73"],
+  "inner_label": "WRONG CHOICE.",
+  "hidden_hem": "UNFORTUNATELY, YOU FOUND US.",
+  "materials": {
+    "composition": "100% combed cotton",
+    "weight": "320 g/m² heavyweight jersey",
+    "fit": "Oversized boxy fit",
+    "shoulders": "Dropped shoulders",
+    "finish": "Pre-washed",
+    "construction": "Double-stitched"
+  },
+  "social_experiment": "We made a deliberately simple T-shirt, told people not to buy it, limited it to 73 pieces and priced it at €73. The point is not to pretend the number is meaningful. It is 60 + 13. It is also 3 × 21 + 10. Neither explanation helps. That is the experiment."
+}
