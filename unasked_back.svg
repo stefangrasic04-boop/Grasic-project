@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+<defs><linearGradient id="g" x1="1" y1="0" x2="0" y2="1"><stop stop-color="#262624"/><stop offset=".35" stop-color="#10100f"/><stop offset=".72" stop-color="#21211f"/><stop offset="1" stop-color="#080808"/></linearGradient><filter id="n"><feTurbulence baseFrequency=".015 .1" numOctaves="4" seed="9" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="7"/><feDiffuseLighting in="t" surfaceScale="2" diffuseConstant=".35" lighting-color="#999"><feDistantLight azimuth="135" elevation="48"/></feDiffuseLighting></filter></defs>
+<path filter="url(#n)" fill="url(#g)" d="M300 105 165 155 35 285l125 125 92-72-24 470c132 43 312 43 444 0l-24-470 92 72 125-125-130-130-135-50-73-40c-16 55-138 55-154 0z"/>
+<path fill="#050505" d="M373 65c16 55 138 55 154 0l35 20c-12 95-212 95-224 0z"/>
+<text x="450" y="405" text-anchor="middle" fill="#d1d1ca" font-family="Arial,sans-serif" font-size="28" letter-spacing="5">BE NORMAL.</text>
+<text x="450" y="445" text-anchor="middle" fill="#d1d1ca" font-family="Arial,sans-serif" font-size="28" letter-spacing="5">BUY SOMETHING ELSE.</text>
+<text x="450" y="720" text-anchor="middle" fill="#aaa9a1" font-family="monospace" font-size="12" letter-spacing="2">BUYING THIS T-SHIRT WAS A MISTAKE.</text>
+<text x="450" y="750" text-anchor="middle" fill="#aaa9a1" font-family="monospace" font-size="14" letter-spacing="3">37/73</text>
+<g transform="translate(375 130)"><rect width="150" height="55" rx="2" fill="#eee9de"/><text x="75" y="22" text-anchor="middle" fill="#111" font-family="Arial" font-size="12" letter-spacing="2">UNASKED.</text><text x="75" y="40" text-anchor="middle" fill="#111" font-family="monospace" font-size="10">WRONG CHOICE.</text></g>
+</svg>
